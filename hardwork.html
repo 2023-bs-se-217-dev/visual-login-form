@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Blog Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style type="text/css">
+      /* Reset basic margins */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Hero Section with partial height */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 900px; /* adjust as needed */
+  background-image: url('https://sincerelyjules.com/wp-content/uploads/2025/04/Sincerely_jules_stripe_pjs_victorias_seceret_fit-scaled.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 50px; /* space before blog posts */
+}
+
+/* Transparent Header overlay */
+.hero header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.2); /* semi-transparent */
+}
+
+.hero header .logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+.hero header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.hero header nav a:hover {
+  color: #b5838d;
+}
+
+/* Center text overlay on hero image */
+.hero .hero-text {
+  position: absolute;
+  top: 60%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  color: white;
+  z-index: 2;
+}
+
+.hero .hero-text h1 {
+  font-size: 50px;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 20px;
+}
+
+.hero .hero-text p {
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* Optional overlay for readability */
+.hero::after {
+  content: '';
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.3); /* dark overlay */
+  z-index: 1;
+}
+
+    
+  /* Blog post main container      */
+
+.blog-post {
+  display: flex; /* keeps image & text side by side */
+  align-items: center; /* centers vertically */
+  justify-content: space-between; /* adds space between image and text */
+  padding: 50px 0%; /* top/bottom and side spacing */
+  gap: 60px; /* space between text and image */
+  
+}
+
+/* Reverse class                 */
+/* ============================= */
+/* It flips the direction so image goes to right side */
+.blog-post.reverse {
+  flex-direction: row-reverse;
+  padding-top: 1px;
+}
+.blog-post.reverse .text {
+  padding-left: 80px; /* moves text closer to image */
+}
+
+.blog-post.reverse .image img{
+  margin-top:  -100px;
+}
+
+/* ============================= */
+/* Image styling                 */
+/* ============================= */
+.blog-post .image img {
+  width: 700px; /* image width */
+  height: 30%; /* keeps natural height */
+  border-radius: none; /* smooth corners */
+  transition: transform 0.3s ease; /* hover animation */
+
+}
+
+/* Zoom image a little on hover */
+.blog-post .image img:hover {
+  transform: scale(1.03);
+}
+
+/* ============================= */
+/* Text section styling          */
+/* ============================= */
+.blog-post .text {
+  flex: 1; /* text takes remaining width */
+
+}
+
+/* category small gray text */
+.category {
+  font-size: 13px;
+  letter-spacing: 7px;
+  color: #777;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+/* removes underline from title link */
+.title-link {
+  text-decoration: none;
+  color: black;
+}
+
+/* main heading of post */
+.title-link h2 {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+/* bold part (2nd line of title) */
+.title-link span {
+  font-weight: bold;
+}
+
+/* title hover color effect */
+.title-link:hover h2 {
+  color: #b5838d; /* soft pinkish tone */
+}
+
+/* ============================= */
+/* Read More button styling      */
+/* ============================= */
+.read-btn {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  background-color: #000;
+  padding: 10px 22px;
+  border-radius: 25px;
+  transition: background 0.3s;
+}
+
+/* hover color for button */
+.read-btn:hover {
+  background-color: #b5838d;
+}
+
+
+/* ============================= */
+/* Responsive design for phones  */
+/* ============================= */
+@media (max-width: 900px) {
+  .blog-post {
+    flex-direction: column; /* image & text go top to bottom */
+    text-align: center;
+  }
+
+  .blog-post.reverse {
+    flex-direction: column; /* reverse one also stacked same way */
+  }
+
+  .blog-post .image img {
+    width: 100%; /* full width on small screens */
+  }
+}
+/* ------------------------------ */
+/* Product Row Under Text         */
+/* ------------------------------ */
+
+.product-row {
+  display: flex;
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.product-row img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform .3s ease;
+}
+
+/* Hover zoom */
+.product-row img:hover {
+  transform: scale(1.08);
+}
+
+/* Responsive fix */
+@media (max-width: 900px) {
+  .product-row {
+    justify-content: center;
+  }
+}
+
+ 
+ /* Highlights of the Week Styles */
+/* ============================= */
+.highlights {
+  background-color: #f6ede9; /* soft beige background */
+  padding: 60px 0;
+  text-align: center;
+}
+
+.highlight-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 48px;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+/* slider layout */
+.slider-wrapper {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  flex: 0 0 33.33%; /* show 3 images at a time */
+  text-align: center;
+  padding: 0 10px;
+}
+
+.slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.4s ease;
+}
+
+.slide img:hover {
+  opacity: 0.8; /* fades slightly on hover */
+}
+
+.slide p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #000;
+}
+
+.slide p strong {
+  display: block;
+  font-weight: 600;
+}
+
+/* navigation arrows */
+.prev, .next {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+  background-color: #b5838d;
+  color: #fff;
+}
+
+.prev {
+  margin-right: 15px;
+}
+
+.next {
+  margin-left: 15px;
+}
+
+
+/* responsive */
+@media (max-width: 900px) {
+  .slide {
+    flex: 0 0 100%; /* show 1 image at a time on mobile */
+  }
+}
+
+.slide a {
+  text-decoration: none; /* no underline */
+  color: inherit; /* use normal text color */
+  display: block; /* make the whole block clickable */
+}
+
+/* Gap between flexbox & footer  */
+/* ============================= */
+.footer-gap {
+  height: 50px; /* small clean space before footer */
+}
+
+/* ============================= */
+/* Footer Styling (updated)      */
+/* ============================= */
+.site-footer {
+  background-color: #e7d2c2; /* slightly darker beige than highlights */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 8%;
+  color: #333;
+  flex-wrap: wrap;
+  border-top: 1px solid #ccc;
+}
+
+/* Left: icons */
+.footer-left a {
+  color: black; /* black icons */
+  font-size: 22px;
+  margin-right: 15px;
+  transition: opacity 0.3s;
+}
+.footer-left a:hover {
+  opacity: 0.7; /* slight fade hover */
+}
+
+/* Center text */
+.footer-center {
+  text-align: center;
+}
+.footer-center h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+.footer-center p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Right links */
+.footer-right a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.footer-right a:hover {
+  color: #b5838d; /* soft pink hover */
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-left, .footer-right {
+    margin-top: 10px;
+  }
+}
+    
+</style>
+</head>
+<body>
+  <div class="hero">
+  <header>
+    <div class="logo">ZANEB ASTHETICS</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="Aboutofhardwork.html">About</a>
+      <a href="Blogofhardwork.html">Blog</a>
+      <a href="Contactofhardwork.html">Contact</a>
+    </nav>
+  </header>
+  
+  <div class="hero-text">
+
+ <p>Welcome to Zaneb Asthetics</p>
+    <h1>WE LIVE FASHION</h1>
+    <p>Creating something beautiful and timeless</p></div>
+   </div>
+  <section class="blog-post">
+    
+    <!-- Left side image -->
+    <div class="image">
+      <!-- clicking the image opens the post1.html page -->
+      <a href="post1.html"><img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\542683192_18533741509011478_6105488415422039407_n.jpg" alt="Post 1"></a>
+    </div>
+    
+    <!-- post1: image on LEFT, text on RIGHT -->
+    <!-- Right side text -->
+    <div class="text">
+      <!-- category name -->
+      <p class="category">FASHION</p>
+
+      <!-- title text is clickable and goes to same link as Read More -->
+      <a href="post1.html" class="title-link">
+        <h2>EASY LAYERS FOR<br><span>IN-BETWEEN WEATHER</span></h2>
+      </a>
+      <a href="post1.html" class="read-btn">READ MORE</a>
+</div>
+  </section>
+  
+  <!-- post2: image on RIGHT, text on LEFT -->
+  <!-- for that, we add class 'reverse' -->
+  <section class="blog-post reverse">
+    
+    <!-- Right side image -->
+    <div class="image">
+      <a href="post2.html"><img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\(3) Instagram_files\569293571_18542457625011478_2433396947503921167_n.jpg" alt="Post 2"></a>
+    </div>
+
+    <!-- Left side text -->
+    <div class="text">
+      <p class="category">LIFESTYLE</p>
+      <a href="post2.html" class="title-link">
+        <h2>STYLISH LOOKS FOR<br><span>SPRING DAYS</span></h2>
+      </a>
+      <a href="post2.html" class="read-btn">READ MORE</a>
+    </div>
+
+  </section>
+  <section class="blog-post">
+    
+    <!-- Left side image -->
+    <div class="image">
+      <!-- clicking the image opens the post1.html page -->
+      <a href="postextra.html"><img src="https://sincerelyjules.com/wp-content/uploads/2025/11/SINCERELUJULES_grey_frankie_coat_silver_adida_the_row_bag_1.jpg" alt="Post extra"></a>
+    </div>
+    
+    <!-- post1: image on LEFT, text on RIGHT -->
+    <!-- Right side text -->
+    <div class="text">
+      <!-- category name -->
+      <p class="category">FASHION</p>
+
+      <!-- title text is clickable and goes to same link as Read More -->
+      <a href="postextra.html" class="title-link">
+        <h2>COZY OUTFIT TO WEAR<br><span>IN ASPEN</span></h2>
+      </a>
+      <a href="postextra.html" class="read-btn">READ MORE</a>
+</div>
+  </section>
+  
+  <!-- Highlights of the Week Section -->
+<!-- ============================= -->
+<section class="highlights">
+  <h2 class="highlight-title">Highlights of the Week</h2>
+
+  <div class="slider-wrapper">
+    <button class="prev">&#10094;</button>
+
+    <div class="slider-container">
+    <div class="slider">
+    <div class="slide">
+    <a href="post3.html">
+   <img src="https://sincerelyjules.com/wp-content/uploads/2024/03/IMG_0029.jpg" alt="Highlight 1">
+  <p>HOW TO STYLE A CAP WITH <br><strong>A BLAZER</strong></p>
+  </a>
+  </div>
+  <div class="slide">
+          <a href="post4.html">
+            <img src="https://sincerelyjules.com/wp-content/uploads/2024/08/sincerely-jules-rhode-dress-everlane-fisherman-sandals-11-1000x1500.jpg" alt="Highlight 2">
+            <p>THE ULTIMATE TRAVEL HERO: <br><strong>MAXI DRESSES</strong></p>
+          </a>
+        </div>
+        <div class="slide">
+          <a href="post5.html">
+            <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\(3) Instagram_files\573300916_18543604201011478_5625319062012459971_n.jpg" alt="Highlight 3">
+            <p>VACATIONS IN <br><strong>SYALUTIA</strong></p>
+          </a>
+        </div>
+        <div class="slide">
+          <a href="post6.html">
+            <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\541151010_18532464505011478_1058370252777759987_n.jpg" alt="Highlight 4">
+            <p>HOW TO STYLE <br><strong>A POLKA DRESS</strong></p>
+          </a>
+        </div>
+        <div class="slide">
+          <a href="post7.html">
+            <img src="https://sincerelyjules.com/wp-content/uploads/2025/03/IMG_6778.jpg" alt="Highlight 5">
+            <p>INSPIRATION: <br><strong>IN NYC CITY</strong></p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+
+<script>
+const slider = document.querySelector('.slider');
+const slides = Array.from(document.querySelectorAll('.slide'));
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
+
+const visibleSlides = 3;
+let index = 0;
+
+// Clone first (visibleSlides -1) slides and append to end
+for(let i = 0; i < visibleSlides -1; i++){
+    let clone = slides[i].cloneNode(true);
+    slider.appendChild(clone);
+}
+
+// Clone last (visibleSlides -1) slides and prepend to start
+for(let i = slides.length - (visibleSlides -1); i < slides.length; i++){
+    let clone = slides[i].cloneNode(true);
+    slider.insertBefore(clone, slider.firstChild);
+}
+
+// Update slides NodeList after cloning
+let allSlides = slider.querySelectorAll('.slide');
+
+function updateSlidePosition(){
+    slider.style.transition = 'transform 0.5s ease';
+    slider.style.transform = `translateX(${-index * (100 / visibleSlides)}%)`;
+}
+
+// initial position (skip prepended clones)
+index = visibleSlides -1;
+updateSlidePosition();
+
+// Next button
+nextBtn.addEventListener('click', () => {
+    index++;
+    updateSlidePosition();
+    resetAutoSlide();
+    checkLoop();
+});
+
+// Prev button
+prevBtn.addEventListener('click', () => {
+    index--;
+    updateSlidePosition();
+    resetAutoSlide();
+    checkLoop();
+});
+
+// Auto slide
+let autoSlide = setInterval(() => {
+    index++;
+    updateSlidePosition();
+    checkLoop();
+}, 3000);
+
+// reset timer
+function resetAutoSlide(){
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => {
+        index++;
+        updateSlidePosition();
+        checkLoop();
+    }, 3000);
+}
+
+// Loop check
+function checkLoop(){
+    setTimeout(() => {
+        if(index >= allSlides.length - (visibleSlides -1)){
+            slider.style.transition = 'none';
+            index = visibleSlides -1;
+            slider.style.transform = `translateX(${-index * (100 / visibleSlides)}%)`;
+        }
+        if(index < visibleSlides -1){
+            slider.style.transition = 'none';
+            index = allSlides.length - (2*(visibleSlides -1));
+            slider.style.transform = `translateX(${-index * (100 / visibleSlides)}%)`;
+        }
+    }, 510); // slightly more than transition time
+}
+</script>
+<!-- Small gap before footer -->
+<div class="footer-gap"></div>
+
+<footer class="site-footer">
+  <!-- Left: social icons -->
+  <div class="footer-left">
+    <a href="https://www.instagram.com/z_aneb.rasool3" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@YOUR_TIKTOK_USERNAME" target="_blank">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+  </div>
+
+  <!-- Center: site title and copyright -->
+  <div class="footer-center">
+    <h3>Zaneb Aesthetics</h3>
+    <p>© 2025 Zaneb Aesthetics. All rights reserved.</p>
+  </div>
+
+  <!-- Right: navigation links -->
+  <div class="footer-right">
+    <a href="Aboutofhardwork.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<!-- Font Awesome icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

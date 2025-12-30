@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>post 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* Reset basic margins */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 900px;
+      background-image: url('https://sincerelyjules.com/wp-content/uploads/2025/03/Tezza-4011.jpg');
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 80px; /* space below image */
+    }
+
+    /* Transparent Header */
+    .hero header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      z-index: 10;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero header .logo {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .hero header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+    }
+
+    .hero header nav a:hover {
+      color: #b5838d;
+    }
+
+    /* Overlay on image */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background-color: rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+
+    /* ===== Text below image ===== */
+    .post-text {
+      text-align: center;
+      padding: 5px 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .post-text .category {
+      font-size: 20px;
+      letter-spacing: 5px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .post-text h2 {
+      font-size: 50px;
+      color: #333;
+      line-height: 1.3;
+    }
+
+    .post-text h2 span {
+      display: block;
+    }
+    /* ===== Centered Image ===== */
+    .post-image {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .post-image img {
+      width: 45%;
+      height: 900px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* ===== Description ===== */
+    .post-description {
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #555;
+      padding: 0 20px;
+    }
+    /* ===== Slider Section ===== */
+    .slider-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 20px 0;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .slider-container::-webkit-scrollbar {
+      display: none; /* hide scrollbar */
+    }
+
+    .slider-item {
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .slider-item img {
+      width: 120px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .slider-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .slider-item p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #222;
+      font-size: 15px;
+    }
+
+    /* Optional: subtle fade edges */
+    .slider-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 100px;
+    }
+
+    /* Two side-by-side images below slider */
+.post-double-images {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* small gap between images */
+  margin: 40px 0; /* space above and below */
+}
+
+.post-double-images img {
+  width: 30%; /* same width for both images */
+  height: auto; /* maintain aspect ratio */
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-top: 2px;
+}
+
+.post-tip {
+  max-width: 800px;       /* text width */
+  margin: 20px auto 60px auto; /* spacing above and below */
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #555;
+  text-align: center;    /* justify the text */
+  padding: 0 20px;        /* horizontal padding for small screens */
+}
+
+/* ===== Comment Section ===== */
+.comment-section {
+  max-width: 750px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  border-top: 2px solid #e7d2c2;
+  font-family: 'Playfair Display', serif;
+  color: #333;
+}
+
+.comment-header h3 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.comment-header p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.like-area {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#like-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #b5838d;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+#like-btn.liked i{
+  color: '#ff4f81';
+}
+
+#like-btn:hover {
+  transform: scale(1.1);
+}
+
+#like-count {
+  font-size: 18px;
+  color: #555;
+  margin-left: 10px;
+}
+
+#comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#comment-form label {
+  font-weight: bold;
+  text-align: left;
+}
+
+#comment-form textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row input {
+  flex: 1;
+}
+
+#comment-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#send-message {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+  width: fit-content;
+  margin: 0 auto;        /* centers the button horizontally */
+  display: block;        /* needed for margin auto to work */
+  border-radius: 4px;    /* optional, for a softer look */
+}
+
+#send-message:hover {
+  background-color: #b5838d;
+}
+
+
+.submitted-comments {
+  margin-top: 40px;
+}
+
+.submitted-comments p {
+  background: #f8f8f8;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Follow Section */
+.follow-section {
+  background-color: #e7d2c2; /* same as footer */
+  padding: 25px 0 0 0;
+  text-align: center;
+  position: relative;
+}
+
+.follow-text {
+  display: inline-block;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+
+.follow-text .script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 45px;
+      color: #333;
+      margin-right: 8px;
+    }
+
+.follow-text .normal {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+}
+
+.insta-gallery {
+  display: flex;
+  width: 100%;
+  background-color: #e7d2c2; /* dusty pink */
+
+}
+
+.insta-gallery img {
+  width: 16.66%;
+  height: 280px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Footer Styling (updated)      */
+.site-footer {
+  background-color: #e7d2c2; /* slightly darker beige than highlights */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 8%;
+  color: #333;
+  flex-wrap: wrap;
+  border-top: none;
+}
+
+/* Left: icons */
+.footer-left a {
+  color: black; /* black icons */
+  font-size: 23px;
+  margin-right: 15px;
+  transition: opacity 0.3s;
+}
+.footer-left a:hover {
+  opacity: 0.7; /* slight fade hover */
+}
+
+/* Center text */
+.footer-center {
+  text-align: center;
+}
+.footer-center h3 {
+  font-family: 'popins' , serifs;
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+.footer-center p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Right links */
+.footer-right a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.footer-right a:hover {
+  color: #b5838d; /* soft pink hover */
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-left, .footer-right {
+    margin-top: 10px;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <header>
+      <div class="logo">ZANEB ASTHETICS</div>
+      <nav>
+        <a href="hardwork.html">Home</a>
+        <a href="Aboutofhardwork.html">About</a>
+        <a href="Blogofhardwork.html">Blog</a>
+        <a href="Contactofhardwork.html">Contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Text below image -->
+  <div class="post-text">
+    <p class="category">INSPIRATION</p>
+    <h2>NYC MOMENTS<br><span>THINGS THAT<br>INSPIRED ME</span></h2>
+  </div>
+
+
+<!-- Centered Image -->
+  <div class="post-image">
+    <img src="https://sincerelyjules.com/wp-content/uploads/2025/03/Tezza-3447.jpg" alt="Trench coat look">
+  </div>
+
+  <!-- Description -->
+  <div class="post-description">
+    <p>
+     Whenever I travel, I look for something new—whether it’s outfit inspiration, beauty staples that make me feel my best, or the excitement of discovering (or rediscovering) favorite places. Travel, for me, is about more than the destination; it’s about the moments that leave a lasting impression, big or small
+      <br><br>
+      New York never runs out of inspiration. Every visit feels like the perfect blend of chaos and creativity. Maybe it’s an outfit that came together because of the city’s energy, a coffee shop I’ll return to every time, or beauty essentials that help me keep up with the pace. Here’s a quick recap of what I did, what I wore, and what inspired me in NYC.
+      <br><br>
+      New Store:Bandit
+      <br><br>
+      Be sure to check out my girl’s new store, Bandit! They carry an amazing selection of athleisure for both men and women. While you’re there, sit down for a coffee and pastry at Rhythm Zero, their in-store café.
+    </p>
+  </div>
+<!-- ===== Product Slider ===== -->
+  <div class="slider-wrapper">
+    <div class="slider-container">
+      <div class="slider-item">
+        <img src="https://m.media-amazon.com/images/I/518XHq2miBL._AC_SX385_.jpg" alt="Coach">
+        <p>ADE-WU</p>
+      </div>
+      <div class="slider-item">
+        <img src="https://shop.mango.com/assets/rcs/pics/static/T8/fotos/S/87080629_92.jpg?imwidth=1920&imdensity=1&ts=1729771478886" alt="J.Crew">
+        <p>MANGO</p>
+      </div>
+      <div class="slider-item">
+        <img src="https://static.zara.net/assets/public/dde5/6b69/6e984379b388/ae0dacc4d61c/16724610624-e1/16724610624-e1.jpg?ts=1761582620591&w=433" alt="Anine Bing">
+        <p>ZARA</p>
+      </div>
+      <div class="slider-item">
+        <img src="https://is4.fwrdassets.com/images/p/fw/z/EIOF-WL28_V1.jpg" alt="Levi’s">
+        <p>ELIOU</p>
+      </div>
+      <div class="slider-item">
+        <img src="https://static.zara.net/assets/public/b08f/d358/489a46a6966c/8826c526724e/13148610700-e1/13148610700-e1.jpg?ts=1758092090444&w=433" alt="Zara">
+        <p>ZARA</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two Images Below Slider -->
+<div class="post-double-images">
+  <img src="https://sincerelyjules.com/wp-content/uploads/2025/03/IMG_6823.jpg" alt="Outfit 1">
+  <img src="https://sincerelyjules.com/wp-content/uploads/2025/03/Tezza-6720.jpg" alt="Outfit 2">
+</div>
+
+<!-- Tip Text Below Two Images -->
+<div class="post-tip">
+  <p>
+    A must-visit every time I’m in town! I love spending the day wandering through the exhibits—the sheer size of the museum is mind-blowing, with stunning architecture, incredible art, and inspiring history. I could spend hours here, completely immersed in it all. Pro tip: wear comfortable shoes, but make sure your outfit is cute for the inevitable photo moment.
+
+  </p>
+</div>
+
+<!-- ===== Like + Comment Section ===== -->
+<section class="comment-section">
+  <div class="comment-header">
+    <h3>Leave a Reply</h3>
+    <p>Your email address will not be published.</p>
+  </div>
+
+  <!-- Like Button -->
+  <div class="like-area">
+    <button id="like-btn"><i class="fa-heart" id="heart-icon"></i></button>
+    <span id="like-count">0</span> Likes
+  </div>
+  <!-- Comment Form -->
+  <form id="comment-form">
+    <label for="comment">Your Comment</label>
+    <textarea id="comment" name="comment" placeholder="Write your comment..."></textarea>
+
+    <div class="form-row">
+      <input type="text" id="name" name="name" placeholder="Name" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+    </div>
+
+    <input type="text" id="website" name="website" placeholder="Website (optional)">
+    
+    <button type="submit" id="send-message">SEND MESSAGE</button>
+  </form>
+
+  <!-- Display Comments -->
+  <div class="submitted-comments" id="submitted-comments">
+    <h4>No comments yet</h4>
+  </div>
+</section>
+
+
+<!-- Follow Me Line -->
+<div class="follow-section">
+  <div class="follow-text">
+    <span class="script">Follow</span>
+    <span class="normal">@ZANEB ASTHETICS</span>
+  </div>
+</div>
+
+<!-- Image Flexbox -->
+<div class="insta-gallery">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\510951452_18520226434011478_9149332260055524101_n.jpg" alt="1">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\535539643_18530350987011478_1143334064456148875_n.jpg" alt="2">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\501085695_18514398259011478_8004445672323107009_n.jpg" alt="3">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\500194889_18513667549011478_5655900541396245468_n.jpg" alt="4">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\538164840_18530706100011478_2368094407812920191_n.jpg" alt="5">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\518731472_18523301662011478_3500738667245821108_n.jpg" alt="6">
+</div>
+
+<!-- Small gap before footer -->
+<div class="footer-gap"></div>
+
+<footer class="site-footer">
+  <!-- Left: social icons -->
+  <div class="footer-left">
+    <a href="https://www.instagram.com/z_aneb.rasool3" target="_blank">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@YOUR_TIKTOK_USERNAME" target="_blank">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+  </div>
+
+  <!-- Center: site title and copyright -->
+  <div class="footer-center">
+    <h3>Zaneb Aesthetics</h3>
+    <p>© 2025 Zaneb Aesthetics. All rights reserved.</p>
+  </div>
+
+  <!-- Right: navigation links -->
+  <div class="footer-right">
+    <a href="Aboutofhardwork.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+<!-- Font Awesome icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" crossorigin="anonymous"></script>
+
+  <script > 
+  let likeCount = 0;
+  const likeBtn = document.getElementById('like-btn');
+  const likeIcon = likeBtn.querySelector('i');
+  const likeCountEl = document.getElementById('like-count');
+  const commentForm = document.getElementById('comment-form');
+  const submittedComments = document.getElementById('submitted-comments');
+
+  // Handle Like
+  likeBtn.addEventListener('click', () => {
+   likeBtn.classList.toggle('liked');
+    
+    if (likeBtn.classList.contains('liked')) {
+       likeIcon.classList.remove('fa-regular');
+    likeIcon.classList.add('fa-solid');
+    likeIcon.style.color = '#ff4f81';
+      likeCount++;
+    } else {
+    likeIcon.classList.remove('fa-solid');
+    likeIcon.classList.add('fa-regular');
+    likeIcon.style.color = '#b5838d';
+      likeCount--;
+    }
+    likeCountEl.textContent = likeCount;
+
+    // Send like info to backend later
+    // fetch('/api/like', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ email: document.getElementById('email').value, likes: likeCount })
+    // });
+  });
+
+  // Handle Comment Submit
+  commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const comment = document.getElementById('comment').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!comment || !name || !email) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    const p = document.createElement('p');
+    p.textContent = `${name}: ${comment}`;
+    submittedComments.appendChild(p);
+    submittedComments.querySelector('h4')?.remove();
+
+    commentForm.reset();
+
+    // Send to backend later
+    // fetch('/api/comment', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ name, email, comment })
+    // });
+  });
+</script>
+
+
+</body>
+</html>
+

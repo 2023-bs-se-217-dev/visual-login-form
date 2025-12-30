@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blog of website</title>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  
+<style type="text/css">
+      /* Reset basic margins */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Header styling */
+    header {
+      display: flex;
+      background-color: #f4f4f4;        /* light grey background */
+      display: flex;                    /* items in a row */
+      justify-content: space-between;   /* logo left, nav right */
+      align-items: center;              /* vertically centered */
+      padding: 30px 50px;               /* spacing */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* soft shadow */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* Logo style */
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      font-family: 'Dancing Script', cursive;
+      color: #333;
+    }
+
+    /* Navigation menu style */
+    nav a {
+      text-decoration: underline;
+      color: #333;
+      margin: 0 15px;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    /* Hover effect */
+    nav a:hover {
+      color: sandybrown; /* blue on hover */
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    hr {
+      width: 100%;
+      margin: 0 auto 40px;
+      border: 1px solid #ccc;
+    }
+
+    /* Blog grid */
+    .blog-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding-bottom: 80px;
+    }
+
+    .blog-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .blog-item {
+      width: 30%;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #333;
+    }
+    /* Hover effect */
+.blog-item img:hover {
+  opacity: 0.7;              /* transparency */
+  filter: grayscale(30%);    /* soft gray tone */
+  transform: scale(1.02);    /* slightly zoom in */
+  cursor: pointer;
+}
+
+
+    .blog-item img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 5px;
+      transition: all 0.4s ease; /* smooth transition */
+    }
+
+    .blog-item p {
+      margin-top: 10px;
+      font-size: 20px;
+      color: black;
+      text-decoration: underline;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    /* Follow Section */
+    .follow-section {
+      background-color: #e7d2c2;
+      padding: 25px 0 0 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .follow-text {
+      display: inline-block;
+      border-bottom: 2px solid #333;
+      padding-bottom: 10px;
+    }
+
+    .follow-text .script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 45px;
+      color: #333;
+      margin-right: 8px;
+    }
+
+    .follow-text .normal {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .insta-gallery {
+      display: flex;
+      width: 100%;
+      background-color: #e7d2c2;
+    }
+
+    .insta-gallery img {
+      width: 16.66%;
+      height: 280px;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #e7d2c2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 35px 8%;
+      color: #333;
+      flex-wrap: wrap;
+      border-top: none;
+    }
+
+    .footer-left a {
+      color: black;
+      font-size: 23px;
+      margin-right: 15px;
+      transition: opacity 0.3s;
+    }
+
+    .footer-left a:hover {
+      opacity: 0.7;
+    }
+
+    .footer-center {
+      text-align: center;
+    }
+
+    .footer-center h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      margin-bottom: 5px;
+    }
+
+    .footer-center p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .footer-right a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .footer-right a:hover {
+      color: #b5838d;
+    }
+
+</style>
+</head>
+<body>
+	<header>
+<div class="logo"><b>ZANEB ASTHETICS</b> </div>
+  <nav>
+    <a href="hardwork.html">Home</a>
+    <a href="Aboutofhardwork.html">About</a>
+    <a href="Blogofhardwork.html">Blog</a>
+    <a href="Contactofhardwork.html">Contact</a>
+  </nav>
+</header>
+
+<h1 style="margin-top: 40px; margin-bottom: 20px;">BLOG POSTS</h1>
+<hr>
+
+<div class="blog-container">
+    <!-- Row 1 -->
+    <div class="blog-row">
+      <div class="blog-item">
+        <a href="post1.html">
+        <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\542683192_18533741509011478_6105488415422039407_n.jpg" alt="Blog 1">
+        <p>Morning Style Vibes</p></a>
+      </div>
+      <div class="blog-item">
+        <a href="post2.html">
+        <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\(3) Instagram_files\569293571_18542457625011478_2433396947503921167_n.jpg" alt="Blog 2">
+        <p>City Walk Inspiration</p></a>
+      </div>
+      <div class="blog-item">
+        <a href="post3.html">
+        <img src="https://sincerelyjules.com/wp-content/uploads/2024/03/IMG_0029.jpg" alt="Highlight 1" alt="Blog 3">
+        <p>Classic Neutrals</p></a>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="blog-row">
+      <div class="blog-item">
+        <a href="post4.html">
+        <img src="https://sincerelyjules.com/wp-content/uploads/2024/08/sincerely-jules-rhode-dress-everlane-fisherman-sandals-11-1000x1500.jpg" alt="Blog 4">
+        <p>Travel Dreams</p></a>
+      </div>
+      <div class="blog-item">
+        <a href="post5.html">
+        <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\(3) Instagram_files\573300916_18543604201011478_5625319062012459971_n.jpg" alt="Blog 5">
+        <p>Weekend Mood</p></a>
+      </div>
+      <div class="blog-item">
+        <a href="post6.html">
+        <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\541151010_18532464505011478_1058370252777759987_n.jpg" alt="Blog 6">
+        <p>Effortless Chic</p></a>
+      </div>
+    </div>
+
+    <!-- Row 3 (1 image center) -->
+    <div class="blog-row">
+      <div class="blog-item" style="width: 100%">
+        <a href="post7.html">
+        <img src="https://sincerelyjules.com/wp-content/uploads/2025/03/IMG_6778.jpg" alt="Blog 7">
+        <p>Everyday Aesthetic</p></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Follow Section -->
+  <div class="follow-section">
+    <div class="follow-text">
+      <span class="script">Follow</span>
+      <span class="normal">@ZANEB ASTHETICS</span>
+    </div>
+  </div>
+
+  <!-- Image Gallery -->
+  <div class="insta-gallery">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\510951452_18520226434011478_9149332260055524101_n.jpg" alt="1">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\535539643_18530350987011478_1143334064456148875_n.jpg" alt="2">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\501085695_18514398259011478_8004445672323107009_n.jpg" alt="3">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\500194889_18513667549011478_5655900541396245468_n.jpg" alt="4">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\538164840_18530706100011478_2368094407812920191_n.jpg" alt="5">
+  <img src="C:\Users\Al-Rayyan-Computer\OneDrive\Desktop\HTML\(1) Instagram_files\518731472_18523301662011478_3500738667245821108_n.jpg" alt="6">
+</div>
+
+  <footer class="site-footer">
+    <div class="footer-left">
+      <a href="https://www.instagram.com/z_aneb.rasool3" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@YOUR_TIKTOK_USERNAME" target="_blank">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+    </div>
+
+    <div class="footer-center">
+      <h3>Zaneb Aesthetics</h3>
+      <p>© 2025 Zaneb Aesthetics. All rights reserved.</p>
+    </div>
+
+    <div class="footer-right">
+      <a href="Aboutofhardwork.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
